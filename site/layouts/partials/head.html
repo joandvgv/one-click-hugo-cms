@@ -1,27 +1,51 @@
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  {{ with .Title | default .Site.Title }}
+  <title>{{ . }}</title>
+  <meta property="og:title" content="{{ . }}" />
+  <meta name="twitter:title" content="{{ . }}" />
+  {{ end }}
 
-	<title>{{ .Title }} | Kaldi</title>
-	<link rel="stylesheet" href="/css/main.css" />
+  {{ with .Description | default .Site.Params.subtitle }}
+  <meta name="description" content="{{ . }}">
+  <meta property="og:description" content="{{ . }}">
+  <meta name="twitter:description" content="{{ . | truncate 200 }}">
+  {{ end }}
 
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="{{ .Site.Params.author }}"/>
+  <meta property="og:site_name" content="{{ .Site.Title }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
 
-	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700" rel="stylesheet">
+  {{ with .Params.thumbnail }}
+  <meta property="og:image" content="{{ . | absURL }}" />
+  <meta name="twitter:image" content="{{ . | absURL }}" />
+  {{ end }}
+  <meta name="twitter:card" content="summary" />
 
-	<!-- Favicons -->
-	<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-	<link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
-	<link rel="manifest" href="/manifest.json">
-	<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#ff4400">
-	<meta name="theme-color" content="#fff">
+  {{ with .Site.Params.twitter }}
+  <meta name="twitter:site" content="@{{ . }}" />
+  <meta name="twitter:creator" content="@{{ . }}" />
+  {{ end }}
 
-	<!-- Open Graph -->
-	<meta property="og:type" content="business.business">
-	<meta property="og:title" content="Kaldi | Great coffee with a conscience">
-	<meta property="og:url" content="/">
-	<meta property="og:image" content="/img/og-image.jpg">
-
-	<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  {{ if .IsPage }}
+  <meta property="og:type" content="article" />
+  {{ with .Site.Params.facebook }}
+  <meta property="og:article:author" content="https://facebook.com/{{ . }}" />
+  {{ end }}
+  {{ else }}
+  <meta property="og:type" content="website" />
+  {{ end }}
+  <!-- Hugo Version number -->
+  {{ .Hugo.Generator -}}
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css" />
+  {{- with .Site.Params.favicon }}
+  <link rel='icon' type='image/x-icon' href="{{ . | absURL }}" />
+  {{- end -}}
+  {{ if eq .URL "/" }}
+  <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+  {{ end }}
+  <script type="text/javascript" src="{{ .Site.BaseURL }}js/bundle.js"></script>
+  {{ partial "head_custom.html" . }}
 </head>
