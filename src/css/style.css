@@ -359,6 +359,7 @@ h1, h2, h3, h4, h5, h6,
   padding-top: 3em;
   padding:5em;
   padding-bottom: 4em;
+  background: #fff;
 }
 
 h1, .h1 {
@@ -8105,12 +8106,6 @@ a.text-grey-darker:hover, a.text-grey-darker:focus {
 
         .section-container {
           margin-top: 5%; }
-
-        .section-bg {
-          background: linear-gradient(180deg, #f4f7f6 75%, #fffeff 25%);
-          padding-top: 10%;
-          margin-left: -15px;
-          margin-right: -15px; }
 
         @media (min-width: 576px) and (max-width: 767.98px) {
           .section-bg {
