@@ -1,6 +1,6 @@
 ---
 author: "Misumi Takuma"
-date: 2017-04-01
+date: 2018-04-01
 linktitle: Image Zoom Sample
 title: Image Zoom Sample
 weight: 10
