@@ -1,28 +1,67 @@
   </main>
   {{ partial "menu.html" . }}
-  <footer class="l-footer">
-    {{ partial "link.html" . }}
-
-    <p class="p-copyright">
-      {{ with .Site.Copyright | safeHTML }}
-        {{ . }}
-      {{ else }}
-        {{ if .Site.Params.author }}
-          {{ if .Site.Params.authorwebsite }}
-            <a href="{{ .Site.Params.authorwebsite }}">{{ .Site.Params.author }}</a>
-          {{ else }}
-            {{ .Site.Params.author }}
-          {{ end }}
-        {{ end }}
-        &nbsp;&bull;&nbsp;
-        {{ .Site.LastChange.Format "2006" }}
-
-        {{ if .Site.Title }}
-          &nbsp;&bull;&nbsp;
-          <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
-        {{ end }}
-      {{ end }}
-    </p>
+  <link rel="stylesheet" href="https://moregidge.com/css/styles.min.css">
+  <footer>
+    <div id="footer-container" class="footer-container">
+      <div id="footer" class="row w-100">
+        <div class="col-12 col-md-4">
+          <img src="../shared/assets/img/mg.png" class="icon-footer" alt="">
+        </div>
+        <div class="col-6 col-md-2">
+          <h5>Products</h5>
+          <ul style="padding-left:0">
+            <li>
+              <a href="/#/personal">Personal Mortgage</a>
+            </li>
+            <li>
+              <a href="/#/business">Business Solutions</a>
+            </li>
+            <li>
+              <a href="/#/blog">Blog Page</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h5>Company</h5>
+          <ul style="padding-left:0">
+            <li>
+              <a href="/#/about">About Us</a>
+            </li>
+            <li>
+              <a href="https://angel.co/moregidge/jobs" target="_blank">Careers</a>
+            </li>
+            <li>
+              <a href="/#/contact">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h5>Legal</h5>
+          <ul style="padding-left:0">
+            <li>
+              <a href="/#/terms">Terms of Use</a>
+            </li>
+            <li>
+              <a href="/#/privacy-policy">Privacy Policy</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h5>Social</h5>
+          <a href="https://twitter.com/moregidge" target="_blank">
+            <img class="social-logo" src="../shared/assets/img/twitter.png" width="22px" alt="">
+          </a>
+          <a href="https://www.instagram.com/moregidge/" target="_blank">
+            <img class="social-logo" src="../shared/assets/img/instagram.svg" width="22px" alt="">
+          </a>
+        </div>
+      </div>
+      <div id="footer-rights" class="row w-100" style="margin:0">
+        <div class="col-12 text-center">
+          <p style="margin-top:1rem" class="font-tiny"> &copy;&nbsp; 2018 Moregidge. &nbsp; All rights reserved.</p>
+        </div>
+      </div>
+    </div>
   </footer>
 
   {{ with .Site.Params.ga_api_key }}
